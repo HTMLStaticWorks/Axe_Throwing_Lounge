@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard | AXORA Lounge</title>
+  <meta name="description" content="Manage your axe throwing reservations, download receipts, review tournament scoring, and update profile options.">
+  
+  <!-- CDNs -->
+  <link id="bootstrap-link" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+</head>
+<body id="user-dashboard-view">
+
+  <!-- Sticky Premium Navigation Header -->
+  <nav class="navbar navbar-expand-lg premium-navbar fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <!-- Premium SVG Axe Logo -->
+        <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
+          <!-- Target Background -->
+          <circle cx="50" cy="50" r="45" stroke="url(#targetGrad)" stroke-width="6" fill="#121318"/>
+          <circle cx="50" cy="50" r="30" stroke="url(#targetGrad)" stroke-width="4" stroke-opacity="0.7"/>
+          <circle cx="50" cy="50" r="15" fill="url(#targetGrad)" />
+          
+          <!-- Crossed Axes -->
+          <g transform="rotate(45 50 50)">
+            <rect x="46" y="20" width="8" height="60" rx="4" fill="#EAECEF" />
+            <path d="M42 20 Q 30 15 30 30 Q 30 45 42 40 L 58 40 Q 70 45 70 30 Q 70 15 58 20 Z" fill="url(#axeGrad)" />
+          </g>
+          <g transform="rotate(-45 50 50)">
+            <rect x="46" y="20" width="8" height="60" rx="4" fill="#EAECEF" />
+            <path d="M42 20 Q 30 15 30 30 Q 30 45 42 40 L 58 40 Q 70 45 70 30 Q 70 15 58 20 Z" fill="url(#axeGrad)" />
+          </g>
+          
+          <defs>
+            <linearGradient id="axeGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FF5E00" />
+              <stop offset="100%" stop-color="#FF8C32" />
+            </linearGradient>
+            <linearGradient id="targetGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FF5E00" />
+              <stop offset="100%" stop-color="#FFD600" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="fs-4 fw-extrabold text-uppercase tracking-wider">AX<span class="text-gradient">ORA</span></span>
+      </a>
+
+      <!-- Controls Group -->
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <a href="admin.html" class="btn-icon" aria-label="Admin Dashboard" title="Admin Dashboard">
+          <i class="fa-solid fa-user-shield fs-5"></i>
+        </a>
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="bi bi-sun-fill"></i>
+        </button>
+        <button class="btn-icon dir-toggle" id="dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
+        
+        <button class="navbar-toggler text-white border-0 d-lg-none ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle Navigation">
+          <i class="bi bi-list fs-1"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar + Content Container -->
+  <div class="dashboard-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <ul class="dashboard-menu">
+        <li class="dashboard-menu-item">
+          <a href="#overview" class="dashboard-menu-link active" data-tab="overview">
+            <i class="bi bi-speedometer2"></i> Overview
+          </a>
+        </li>
+        <li class="dashboard-menu-item">
+          <a href="#bookings" class="dashboard-menu-link" data-tab="bookings">
+            <i class="bi bi-calendar-check"></i> My Bookings
+          </a>
+        </li>
+        <li class="dashboard-menu-item">
+          <a href="#profile" class="dashboard-menu-link" data-tab="profile">
+            <i class="bi bi-person-gear"></i> Profile Settings
+          </a>
+        </li>
+        <li class="dashboard-menu-item">
+          <a href="#notifications" class="dashboard-menu-link" data-tab="notifications">
+            <i class="bi bi-bell"></i> Notifications
+          </a>
+        </li>
+      </ul>
+      
+      <div class="text-center pt-4 border-top border-secondary text-muted fs-8">
+        AXORA Lounge Member
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="dashboard-content">
+      
+      <!-- TAB 1: Overview -->
+      <div class="dash-tab-content" id="tab-overview">
+        <h1 class="text-white h3 uppercase mb-4">Welcome Back, Champion!</h1>
+        
+        <!-- Summary Cards -->
+        <div class="row g-4 mb-4 justify-content-center">
+          <div class="col-md-6">
+            <div class="glass-card text-center py-4">
+              <h3 class="text-secondary fs-8 uppercase">Active Reservations</h3>
+              <div class="display-5 fw-bold text-primary my-2" id="dash-active-bookings">0</div>
+              <p class="text-muted fs-8 mb-0">Upcoming matches scheduled</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="glass-card text-center py-4">
+              <h3 class="text-secondary fs-8 uppercase">Total Visits</h3>
+              <div class="display-5 fw-bold text-primary my-2" id="dash-total-visits">0</div>
+              <p class="text-muted fs-8 mb-0">Completed practice sessions</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="glass-card text-center py-4">
+              <h3 class="text-secondary fs-8 uppercase">Member Rewards</h3>
+              <div class="display-5 fw-bold text-success my-2">1,250</div>
+              <p class="text-muted fs-8 mb-0">Points (Bronze Tier)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent bookings table preview -->
+        <div class="glass-card">
+          <h2 class="text-white h5 uppercase mb-3">Recent Reservations</h2>
+          <div class="table-responsive">
+            <table class="table table-dark table-hover border-secondary align-middle fs-7 mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Booking ID</th>
+                  <th scope="col">Package</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Players</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="user-bookings-body">
+                <!-- Loaded dynamically by assets/js/dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: Bookings -->
+      <div class="dash-tab-content d-none" id="tab-bookings">
+        <h1 class="text-white h3 uppercase mb-4">My Bookings History</h1>
+        <p class="text-secondary fs-7 mb-4">Check past receipts or modify upcoming active reservations.</p>
+        
+        <div class="glass-card" id="history-box">
+          <!-- Loads same dynamic table rows -->
+        </div>
+      </div>
+
+      <!-- TAB 3: Profile Settings -->
+      <div class="dash-tab-content d-none" id="tab-profile">
+        <h1 class="text-white h3 uppercase mb-4">Account Profile</h1>
+        
+        <div class="glass-card max-width-600">
+          <form id="user-profile-form">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="prof-first" class="form-label fs-8 text-secondary">First Name</label>
+                <input type="text" class="form-control" id="prof-first" value="Alex">
+              </div>
+              <div class="col-md-6">
+                <label for="prof-last" class="form-label fs-8 text-secondary">Last Name</label>
+                <input type="text" class="form-control" id="prof-last" value="Thrower">
+              </div>
+              <div class="col-12">
+                <label for="prof-email" class="form-label fs-8 text-secondary">Email Address</label>
+                <input type="email" class="form-control" id="prof-email" value="alex@axoralounge.com">
+              </div>
+              <div class="col-12">
+                <label for="prof-phone" class="form-label fs-8 text-secondary">Phone Number</label>
+                <input type="text" class="form-control" id="prof-phone" value="+1 (555) 0188">
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-premium mt-3">Save Profile</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 4: Notifications -->
+      <div class="dash-tab-content d-none" id="tab-notifications">
+        <h1 class="text-white h3 uppercase mb-4">Inbox Messages</h1>
+        
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="glass-card border-primary p-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="badge-premium mb-0">System Update</span>
+                <span class="text-muted fs-8">June 18, 2026</span>
+              </div>
+              <h4 class="text-white h6">Digital Targets Upgraded</h4>
+              <p class="text-secondary fs-8 mb-0">All double lanes are now updated with version 2.5 projection algorithms, featuring fresh tournament graphics and sound systems.</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="glass-card p-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="badge-premium bg-secondary mb-0">Promo Alert</span>
+                <span class="text-muted fs-8">June 12, 2026</span>
+              </div>
+              <h4 class="text-white h6">Get Double Reward Points on Thursdays</h4>
+              <p class="text-secondary fs-8 mb-0">Book a lane for any Thursday evening slot and receive double points towards customized souvenirs and drink tickets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Bootstrap JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Tab navigation script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.dashboard-menu-link');
+      const tabs = document.querySelectorAll('.dash-tab-content');
+      const historyBox = document.getElementById('history-box');
+      const baseTable = document.querySelector('.table-responsive');
+
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+
+          const tabName = link.dataset.tab;
+          tabs.forEach(tab => {
+            tab.classList.add('d-none');
+            if (tab.id === `tab-${tabName}`) {
+              tab.classList.remove('d-none');
+            }
+          });
+
+          // Sync booking table to history view if selected
+          if (tabName === 'bookings' && historyBox) {
+            historyBox.innerHTML = '';
+            historyBox.appendChild(baseTable.cloneNode(true));
+          }
+        });
+      });
+    });
+  </script>
+  <!-- Custom JS specific scripts -->
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

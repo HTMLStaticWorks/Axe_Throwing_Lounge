@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AXORA Lounge | Premium Axe Throwing & Nightlife</title>
-  <meta name="description" content="Experience competitive axe throwing, corporate team building, private parties, and a premium nightlife lounge. Book your throwing lane online today!">
+  <title>AXORA Lounge | Premium Experience Lounge</title>
+  <meta name="description" content="Discover AXORA Axes Home 2. Learn about our private group lounges, corporate tournament systems, and luxury nightlife atmosphere.">
   
   <!-- CDNs -->
   <link id="bootstrap-link" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -15,25 +15,6 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
-  
-  <!-- SEO Structured Data Schema -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "EntertainmentBusiness",
-      "name": "AXORA Lounge",
-      "image": "assets/images/hero-bg.webp",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "104 Urban Avenue",
-        "addressLocality": "Metropolis",
-        "postalCode": "10001",
-        "addressCountry": "US"
-      },
-      "telephone": "+15550199",
-      "priceRange": "$$"
-    }
-  </script>
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
 <body>
@@ -111,7 +92,7 @@
     </div>
   </nav>
 
-  <!-- Full-screen Mobile Navigation Offcanvas -->
+  <!-- Full-screen Mobile Navigation -->
   <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
     <div class="offcanvas-header border-bottom border-secondary">
       <h5 class="offcanvas-title" id="mobileMenuLabel">MENU</h5>
@@ -149,260 +130,167 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="container text-center text-lg-start">
+  <!-- Hero Split Layout -->
+  <section class="hero-split">
+    <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-8">
-          <span class="badge-premium mb-3">Urban Axe Throwing Lounge</span>
-          <h1 class="hero-title text-white">Unleash Your <br><span class="text-gradient">Inner Champion</span></h1>
+        <!-- Left Side: Content -->
+        <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
+          <span class="badge-premium mb-3">The New Standard of Entertainment</span>
+          <h1 class="hero-title text-white">Experience <br>Axe Throwing <br><span class="text-gradient">Redefined</span></h1>
           <p class="hero-subtitle">
-            Experience competitive axe throwing, private events, and unforgettable nights with friends, teams, and celebrations. Premium cocktails, craft beers, and expert coaching included.
+            Welcome to the intersection of urban sport and high-end nightlife. Premium private lounge seating, customized safety dividers, and chef-curated appetizers.
           </p>
           <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
-            <a href="booking.html" class="btn btn-premium">Book A Lane <i class="bi bi-chevron-right ms-2"></i></a>
-            <a href="services.html" class="btn btn-outline-premium">Explore Packages</a>
+            <a href="booking.html" class="btn btn-premium">Reserve Lane</a>
+            <a href="#experiences" class="btn btn-outline-premium">Explore The Lounge</a>
+          </div>
+        </div>
+
+        <!-- Right Side: 3D SVG Floating Visual -->
+        <div class="col-lg-6">
+          <div class="hero-visual-container">
+            <!-- Premium Neon Target and Axes SVG -->
+            <svg width="400" height="400" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto; animation: float 6s ease-in-out infinite;">
+              <!-- Target Background Circles -->
+              <circle cx="250" cy="250" r="200" stroke="#1E202B" stroke-width="20" />
+              <circle cx="250" cy="250" r="160" stroke="#FF5E00" stroke-width="8" stroke-dasharray="10, 5" style="filter: drop-shadow(0 0 15px rgba(255, 94, 0, 0.6));" />
+              <circle cx="250" cy="250" r="120" stroke="#1E202B" stroke-width="12" />
+              <circle cx="250" cy="250" r="80" stroke="#FF8C32" stroke-width="6" style="filter: drop-shadow(0 0 10px rgba(255, 140, 50, 0.5));" />
+              <circle cx="250" cy="250" r="40" fill="#FF5E00" style="filter: drop-shadow(0 0 20px rgba(255, 94, 0, 0.8));" />
+
+              <!-- Crossed Axes Graphic -->
+              <g transform="translate(250, 250) rotate(45) translate(-100, -100)">
+                <!-- Axis 1 -->
+                <path d="M40 160L80 160L80 50L60 20L30 50L40 60Z" fill="#8E92A2" />
+                <path d="M10 20L70 0L80 30L30 50Z" fill="#FF5E00" />
+                <!-- Handle -->
+                <rect x="55" y="60" width="10" height="130" rx="3" fill="#D2B48C" transform="rotate(-30, 55, 60)" />
+              </g>
+              <g transform="translate(250, 250) rotate(-45) translate(-100, -100)">
+                <!-- Axis 2 -->
+                <path d="M40 160L80 160L80 50L60 20L30 50L40 60Z" fill="#8E92A2" />
+                <path d="M10 20L70 0L80 30L30 50Z" fill="#FF8C32" />
+                <!-- Handle -->
+                <rect x="55" y="60" width="10" height="130" rx="3" fill="#D2B48C" transform="rotate(-30, 55, 60)" />
+              </g>
+            </svg>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 1: Experience Highlights -->
-  <section class="py-5 glow-section">
+  <!-- Interactive Experience Cards -->
+  <section class="py-5 glow-section" id="experiences">
     <div class="container my-5">
       <div class="text-center mb-5">
-        <span class="badge-premium">The Experience</span>
-        <h2 class="fs-1 text-white uppercase mt-2">Where Thrill Meets Premium Nightlife</h2>
-        <p class="max-width-600 mx-auto text-secondary">Step out of the ordinary. We offer a high-end atmosphere designed for adrenaline, comfort, and premium social gatherings.</p>
+        <span class="badge-premium">The Features</span>
+        <h2 class="fs-1 text-white uppercase mt-2">Interactive Lounge Spaces</h2>
       </div>
 
       <div class="row g-4">
-        <div class="col-md-4">
-          <div class="glass-card highlight-card">
-            <i class="fa-solid fa-bullseye highlight-icon"></i>
-            <h3 class="h4 text-white">Digital Target Scoring</h3>
-            <p>Throw at target boards enhanced with interactive digital projections, games, and automatic scoring updates.</p>
+        <div class="col-lg-4 col-md-6">
+          <div class="glass-card">
+            <h3 class="text-gradient">01 / Lanes</h3>
+            <h4 class="text-white h5 mt-2">Projection Target Arenas</h4>
+            <p class="text-secondary fs-7 mt-3">Interactive targets featuring automated zombie games, classic scoring, and board modifications.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="glass-card highlight-card">
-            <i class="fa-solid fa-whiskey-glass highlight-icon"></i>
-            <h3 class="h4 text-white">High-End Cocktail Bar</h3>
-            <p>Complement your victory with our selection of artisanal cocktails, premium spirits, and rotating craft beers on tap.</p>
+        <div class="col-lg-4 col-md-6">
+          <div class="glass-card">
+            <h3 class="text-gradient">02 / Lounge</h3>
+            <h4 class="text-white h5 mt-2">Leather Booth Seating</h4>
+            <p class="text-secondary fs-7 mt-3">Plush seating for group comfort, offering unobstructed views of adjacent throwing lanes.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="glass-card highlight-card">
-            <i class="fa-solid fa-shield-halved highlight-icon"></i>
-            <h3 class="h4 text-white">Axe-Pert Instructors</h3>
-            <p>Every group gets a dedicated coach to teach techniques, coordinate trick throws, and host tournament scoring.</p>
+        <div class="col-lg-4 col-md-6 text-center text-lg-start d-flex align-items-center">
+          <div class="px-3">
+            <h4 class="text-white">Need a Full Lounge Takeover?</h4>
+            <p class="text-secondary fs-7">We offer facility rentals for groups up to 100 people. Includes custom catering and dedicated tournament setup.</p>
+            <a href="contact.html" class="text-primary fw-bold text-uppercase fs-7">Inquire Now <i class="bi bi-arrow-right ms-1"></i></a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2: Why Choose Our Lounge -->
-  <section class="py-5 bg-secondary position-relative">
+  <!-- Corporate Team Events Detail Section -->
+  <section class="py-5 bg-secondary">
     <div class="container my-5">
       <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
-          <span class="badge-premium">Premium Quality</span>
-          <h2 class="fs-1 text-white uppercase mt-2">A Premium Entertainment Venue Built Around Axe Throwing</h2>
-          <p class="text-secondary mt-3 text-start text-lg-start">We aren't a warehouse. AXORA is a luxury, fully climate-controlled sports lounge with ambient sound, leather seating, and custom targets.</p>
-          
-          <div class="row g-3 mt-4 text-start">
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
-                <i class="bi bi-check-circle-fill text-primary me-3 fs-4"></i>
-                <span class="text-white fw-semibold">10 Double Throwing Lanes</span>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
-                <i class="bi bi-check-circle-fill text-primary me-3 fs-4"></i>
-                <span class="text-white fw-semibold">Glow Targets & Scoring</span>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
-                <i class="bi bi-check-circle-fill text-primary me-3 fs-4"></i>
-                <span class="text-white fw-semibold">100% Guarded Safety Cages</span>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
-                <i class="bi bi-check-circle-fill text-primary me-3 fs-4"></i>
-                <span class="text-white fw-semibold">Lounge & VIP Bar Areas</span>
-              </div>
-            </div>
-          </div>
+          <span class="badge-premium">Corporate Packages</span>
+          <h2 class="fs-1 text-white uppercase mt-2">Elevate Your Corporate Team Building</h2>
+          <p class="text-secondary mt-3">Break down corporate barriers with friendly competition. Our customized tournament structures encourage communication, laughter, and high energy.</p>
+          <ul class="list-unstyled text-secondary mt-4">
+            <li class="mb-3"><i class="bi bi-check-lg text-primary me-2"></i> Dedicated Event Coordinator & range coach</li>
+            <li class="mb-3"><i class="bi bi-check-lg text-primary me-2"></i> Private lounge area with dedicated target lanes</li>
+            <li class="mb-3"><i class="bi bi-check-lg text-primary me-2"></i> Full catering, sliders, platters & custom cocktail menu</li>
+          </ul>
+          <a href="service-details.html" class="btn btn-premium mt-3">View Corporate Offerings</a>
         </div>
         <div class="col-lg-6">
-          <div class="glass-card p-4 border-primary text-center text-lg-start">
-            <h3 class="text-white mb-4"><span class="pulse-badge"></span>Active Safety Protocol</h3>
-            <p class="text-start text-lg-start">Our number one priority is keeping you safe. Our lanes are fully enclosed by structural steel safety cages, and throwing guidelines are strictly supervised by accredited range coaches.</p>
-            <ul class="list-unstyled text-secondary text-start text-lg-start">
-              <li class="mb-2"><i class="bi bi-shield-check text-primary me-2"></i> Closed-toe shoes required</li>
-              <li class="mb-2"><i class="bi bi-shield-check text-primary me-2"></i> One thrower per sub-lane area</li>
-              <li class="mb-2"><i class="bi bi-shield-check text-primary me-2"></i> Thorough safety briefing before every session</li>
-            </ul>
-            <a href="about.html" class="btn btn-outline-premium mt-3">Read About Safety</a>
+          <div class="glass-card p-0 border-0 overflow-hidden">
+            <!-- Fallback design styled card -->
+            <div class="p-5 text-center bg-black position-relative" style="min-height: 350px; display: flex; flex-direction: column; justify-content: center;">
+              <h3 class="text-gradient display-5 fw-extrabold uppercase">CHAMPIONS' BRACKET</h3>
+              <p class="text-white fs-6 mt-3">Interactive digital brackets for team tournaments.</p>
+              <div class="d-flex justify-content-center gap-3 mt-4">
+                <div class="px-3 py-2 bg-secondary rounded text-white fs-8">Marketing team: <strong class="text-primary">240 pts</strong></div>
+                <div class="px-3 py-2 bg-secondary rounded text-white fs-8">Sales team: <strong class="text-primary">280 pts</strong></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: Event Packages -->
+  <!-- Party Packages Section -->
   <section class="py-5 glow-section">
     <div class="container my-5">
       <div class="text-center mb-5">
-        <span class="badge-premium">Special Events</span>
-        <h2 class="fs-1 text-white uppercase mt-2">Private Lanes & Celebration Packages</h2>
-        <p class="max-width-600 mx-auto text-secondary">Perfect layouts for every type of crowd. Host group sizes from 4 to 100 players.</p>
+        <span class="badge-premium">Celebrations</span>
+        <h2 class="fs-1 text-white uppercase mt-2">Private Party Rentals</h2>
       </div>
 
       <div class="row g-4">
-        <!-- Package 1 -->
-        <div class="col-md-4">
-          <div class="glass-card h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="badge-premium">Popular</span>
-              <h3 class="text-white">Corporate Events</h3>
-              <p class="text-secondary fs-7">Impress your team with private lanes, food packages, tournament brackets, and expert coaching.</p>
-            </div>
-            <div class="mt-4">
-              <a href="service-details.html" class="btn btn-outline-premium w-100">Learn More</a>
-            </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card text-center">
+            <div class="mb-3"><i class="bi bi-award text-primary fs-1"></i></div>
+            <h3 class="text-white h5">Birthday Bash</h3>
+            <p class="text-secondary fs-7">Make this year memorable. Full coaching, souvenir targets, and custom drinks.</p>
+            <a href="booking.html" class="btn btn-sm btn-outline-premium mt-3">Select Package</a>
           </div>
         </div>
-        <!-- Package 2 -->
-        <div class="col-md-4">
-          <div class="glass-card h-100 d-flex flex-column justify-content-between border-primary">
-            <div>
-              <span class="badge-premium bg-primary text-white">High Energy</span>
-              <h3 class="text-white">Bachelor & Bachelorette</h3>
-              <p class="text-secondary fs-7">Celebrate in style with premium champagne toasts, catering add-ons, and dedicated lane coach services.</p>
-            </div>
-            <div class="mt-4">
-              <a href="services.html" class="btn btn-premium w-100">Book Celebration</a>
-            </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card text-center border-primary">
+            <div class="mb-3"><i class="bi bi-gem text-primary fs-1"></i></div>
+            <h3 class="text-white h5">VIP Lounge Rental</h3>
+            <p class="text-secondary fs-7">Our most premium lanes, dedicated bartender, and gourmet catering platters.</p>
+            <a href="booking.html" class="btn btn-sm btn-premium mt-3">Select Package</a>
           </div>
         </div>
-        <!-- Package 3 -->
-        <div class="col-md-4">
-          <div class="glass-card h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="badge-premium">Weekly Leagues</span>
-              <h3 class="text-white">League Matches</h3>
-              <p class="text-secondary fs-7">Join our seasonal competitive tournament league. Climb the target ladder and claim the Championship trophy.</p>
-            </div>
-            <div class="mt-4">
-              <a href="about.html" class="btn btn-outline-premium w-100">Join League</a>
-            </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card text-center">
+            <div class="mb-3"><i class="bi bi-people text-primary fs-1"></i></div>
+            <h3 class="text-white h5">Social Competitions</h3>
+            <p class="text-secondary fs-7">Perfect for friend meetups, competitive rivalries, or league tournament training.</p>
+            <a href="booking.html" class="btn btn-sm btn-outline-premium mt-3">Select Package</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Booking Process Steps -->
-  <section class="py-5 bg-secondary text-center">
-    <div class="container my-5">
-      <div class="text-center mb-5">
-        <span class="badge-premium">How it Works</span>
-        <h2 class="fs-1 text-white uppercase mt-2">Reserve Your Lane in 3 Easy Steps</h2>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="p-3">
-            <div class="step-dot active mx-auto mb-3">1</div>
-            <h3 class="h5 text-white">Choose Your Package</h3>
-            <p class="text-secondary fs-7">Select Open Throwing, Corporate Packages, or custom VIP Group rentals.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-3">
-            <div class="step-dot active mx-auto mb-3">2</div>
-            <h3 class="h5 text-white">Select Date & Time</h3>
-            <p class="text-secondary fs-7">Pick your slot via our real-time calendar showing up-to-date lane availability.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-3">
-            <div class="step-dot active mx-auto mb-3">3</div>
-            <h3 class="h5 text-white">Confirm & Throw!</h3>
-            <p class="text-secondary fs-7">Pay deposit securely, receive your QR confirmation, and get ready to throw!</p>
-          </div>
-        </div>
-      </div>
-      <a href="booking.html" class="btn btn-premium mt-5">Launch Booking System</a>
-    </div>
-  </section>
-
-  <!-- Section 5: Testimonials -->
-  <section class="py-5 glow-section">
-    <div class="container my-5">
-      <div class="text-center mb-5">
-        <span class="badge-premium">Guest Feedback</span>
-        <h2 class="fs-1 text-white uppercase mt-2">What Champions Say</h2>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="glass-card">
-            <div class="d-flex align-items-center mb-3">
-              <div class="flex-shrink-0 bg-primary text-white rounded-circle p-3 me-3 font-monospace fw-bold">
-                JD
-              </div>
-              <div>
-                <h4 class="text-white mb-0 fs-6">Jonathan D.</h4>
-                <div class="text-primary fs-7">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-              </div>
-            </div>
-            <p class="text-secondary mb-0">"Hosted my department's quarterly gathering here. The coaches were absolutely outstanding and the lounge atmosphere is incredibly stylish. 10/10."</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="glass-card">
-            <div class="d-flex align-items-center mb-3">
-              <div class="flex-shrink-0 bg-primary text-white rounded-circle p-3 me-3 font-monospace fw-bold">
-                SR
-              </div>
-              <div>
-                <h4 class="text-white mb-0 fs-6">Sarah R.</h4>
-                <div class="text-primary fs-7">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                </div>
-              </div>
-            </div>
-            <p class="text-secondary mb-0">"This is not just normal axe throwing. The projected games on targets make it feel like real-life dart boards with axes. Cocktails were fantastic too."</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA Section -->
+  <!-- Direct Reservation CTA -->
   <section class="py-5 text-center bg-secondary">
     <div class="container my-5">
-      <h2 class="fs-1 text-white uppercase">Ready to Take Aim?</h2>
-      <p class="max-width-600 mx-auto text-secondary mt-3">Book your target lane today and discover where competitive energy meets premium nightlife entertainment.</p>
+      <h2 class="fs-1 text-white uppercase">Skip The Line. Book Your Target.</h2>
+      <p class="max-width-600 mx-auto text-secondary mt-3">Lanes sell out quickly, especially on weekends. Secure your spot in advance with our easy reservation flow.</p>
       <div class="mt-4">
-        <a href="booking.html" class="btn btn-premium btn-lg px-5">Book Your Lane Now</a>
+        <a href="booking.html" class="btn btn-premium btn-lg px-5">Go To Real-Time Booking</a>
       </div>
     </div>
   </section>
@@ -502,6 +390,13 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

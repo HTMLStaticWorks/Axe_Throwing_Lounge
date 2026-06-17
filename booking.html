@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve a Lane - Booking Engine | AXORA Lounge</title>
+  <meta name="description" content="Use our real-time multi-step reservation system to select dates, choose time slots, pay deposit, and secure throwing targets instantly.">
+  
+  <!-- CDNs -->
+  <link id="bootstrap-link" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+</head>
+<body>
+
+  <!-- Sticky Premium Navigation Header -->
+  <nav class="navbar navbar-expand-lg premium-navbar fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <!-- Premium SVG Axe Logo -->
+        <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
+          <!-- Target Background -->
+          <circle cx="50" cy="50" r="45" stroke="url(#targetGrad)" stroke-width="6" fill="#121318"/>
+          <circle cx="50" cy="50" r="30" stroke="url(#targetGrad)" stroke-width="4" stroke-opacity="0.7"/>
+          <circle cx="50" cy="50" r="15" fill="url(#targetGrad)" />
+          
+          <!-- Crossed Axes -->
+          <g transform="rotate(45 50 50)">
+            <rect x="46" y="20" width="8" height="60" rx="4" fill="#EAECEF" />
+            <path d="M42 20 Q 30 15 30 30 Q 30 45 42 40 L 58 40 Q 70 45 70 30 Q 70 15 58 20 Z" fill="url(#axeGrad)" />
+          </g>
+          <g transform="rotate(-45 50 50)">
+            <rect x="46" y="20" width="8" height="60" rx="4" fill="#EAECEF" />
+            <path d="M42 20 Q 30 15 30 30 Q 30 45 42 40 L 58 40 Q 70 45 70 30 Q 70 15 58 20 Z" fill="url(#axeGrad)" />
+          </g>
+          
+          <defs>
+            <linearGradient id="axeGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FF5E00" />
+              <stop offset="100%" stop-color="#FF8C32" />
+            </linearGradient>
+            <linearGradient id="targetGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FF5E00" />
+              <stop offset="100%" stop-color="#FFD600" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="fs-4 fw-extrabold text-uppercase tracking-wider">AX<span class="text-gradient">ORA</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="collapse navbar-collapse d-none d-lg-flex justify-content-center" id="desktopNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Home
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark border-secondary" aria-labelledby="homeDropdown">
+              <li><a class="dropdown-item" href="index.html">Home 1</a></li>
+              <li><a class="dropdown-item" href="index2.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Experiences</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Controls & CTA Action Group -->
+      <div class="d-flex align-items-center gap-2">
+        <a href="dashboard.html" class="btn-icon d-none d-lg-inline-flex" aria-label="Dashboard" title="Dashboard">
+          <i class="fa-solid fa-circle-user fs-5"></i>
+        </a>
+        <button class="btn-icon d-none d-lg-inline-flex theme-toggle" aria-label="Toggle Theme">
+          <i class="bi bi-sun-fill"></i>
+        </button>
+        <button class="btn-icon d-none d-lg-inline-flex dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
+        <a href="login.html" class="btn btn-outline-premium d-none d-lg-inline-block">Login</a>
+        <a href="booking.html" class="btn btn-premium d-none d-lg-inline-block">Book Your Lane</a>
+        
+        <button class="navbar-toggler text-white border-0 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle Navigation">
+          <i class="bi bi-list fs-1"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Booking Wizard Container -->
+  <main class="container" style="margin-top: 120px; margin-bottom: 80px;" id="booking-wizard">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        
+        <!-- Step timeline dots indicator -->
+        <div class="step-indicator">
+          <div class="step-dot active">1</div>
+          <div class="step-dot">2</div>
+          <div class="step-dot">3</div>
+          <div class="step-dot">4</div>
+          <div class="step-dot">5</div>
+        </div>
+
+        <div class="glass-card">
+          
+          <!-- STEP 1: Select Event Type -->
+          <div class="booking-step active" data-step="1">
+            <h2 class="text-white h4 uppercase mb-3">Step 1: Choose Experience</h2>
+            <p class="text-secondary fs-7">Select the style of lane booking you wish to make.</p>
+            
+            <div class="row g-3 mt-3">
+              <div class="col-md-6">
+                <div class="glass-card p-3 border event-select-card cursor-pointer text-center" data-value="Open Lane Session">
+                  <i class="bi bi-bullseye text-primary fs-2 mb-2 d-inline-block"></i>
+                  <h3 class="text-white h6">Open Lane Sessions</h3>
+                  <p class="text-secondary fs-8 mb-0">Hourly competitive targets for individuals and couples.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="glass-card p-3 border event-select-card cursor-pointer text-center" data-value="Corporate Team Event">
+                  <i class="bi bi-briefcase text-primary fs-2 mb-2 d-inline-block"></i>
+                  <h3 class="text-white h6">Corporate Outing</h3>
+                  <p class="text-secondary fs-8 mb-0">Team building tournaments, coaching and appetizers.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="glass-card p-3 border event-select-card cursor-pointer text-center" data-value="Bachelor/Bachelorette Party">
+                  <i class="bi bi-gem text-primary fs-2 mb-2 d-inline-block"></i>
+                  <h3 class="text-white h6">Bachelor Party</h3>
+                  <p class="text-secondary fs-8 mb-0">Lounge booths, VIP coaching and drink tokens.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="glass-card p-3 border event-select-card cursor-pointer text-center" data-value="Group Match Experience">
+                  <i class="bi bi-people-fill text-primary fs-2 mb-2 d-inline-block"></i>
+                  <h3 class="text-white h6">Group Challenge</h3>
+                  <p class="text-secondary fs-8 mb-0">Multi-lane league structures for 8 to 15 throwers.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+              <button class="btn btn-premium btn-next px-4" disabled>Select Event to Continue</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Choose Date & Time -->
+          <div class="booking-step" data-step="2">
+            <h2 class="text-white h4 uppercase mb-3">Step 2: Date & Time</h2>
+            <p class="text-secondary fs-7">Pick an available calendar date and active lane time slot.</p>
+
+            <div class="row mt-4">
+              <div class="col-md-7">
+                <h3 class="text-white h6">June 2026</h3>
+                <div class="calendar-grid">
+                  <div class="text-muted fs-8 text-center fw-bold">S</div>
+                  <div class="text-muted fs-8 text-center fw-bold">M</div>
+                  <div class="text-muted fs-8 text-center fw-bold">T</div>
+                  <div class="text-muted fs-8 text-center fw-bold">W</div>
+                  <div class="text-muted fs-8 text-center fw-bold">T</div>
+                  <div class="text-muted fs-8 text-center fw-bold">F</div>
+                  <div class="text-muted fs-8 text-center fw-bold">S</div>
+
+                  <!-- Days mockup -->
+                  <div class="calendar-day disabled">15</div>
+                  <div class="calendar-day disabled">16</div>
+                  <div class="calendar-day disabled">17</div>
+                  <div class="calendar-day" data-date="2026-06-18">18</div>
+                  <div class="calendar-day" data-date="2026-06-19">19</div>
+                  <div class="calendar-day" data-date="2026-06-20">20</div>
+                  <div class="calendar-day" data-date="2026-06-21">21</div>
+                  <div class="calendar-day" data-date="2026-06-22">22</div>
+                  <div class="calendar-day" data-date="2026-06-23">23</div>
+                  <div class="calendar-day" data-date="2026-06-24">24</div>
+                  <div class="calendar-day" data-date="2026-06-25">25</div>
+                  <div class="calendar-day" data-date="2026-06-26">26</div>
+                  <div class="calendar-day" data-date="2026-06-27">27</div>
+                  <div class="calendar-day" data-date="2026-06-28">28</div>
+                </div>
+              </div>
+              <div class="col-md-5 mt-4 mt-md-0">
+                <h3 class="text-white h6">Available Times</h3>
+                <div class="row g-2 mt-3">
+                  <div class="col-6"><div class="time-slot" data-time="4:00 PM">4:00 PM</div></div>
+                  <div class="col-6"><div class="time-slot booked">5:30 PM</div></div>
+                  <div class="col-6"><div class="time-slot" data-time="7:00 PM">7:00 PM</div></div>
+                  <div class="col-6"><div class="time-slot" data-time="8:30 PM">8:30 PM</div></div>
+                  <div class="col-6"><div class="time-slot" data-time="10:00 PM">10:00 PM</div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button class="btn btn-outline-premium btn-prev">Back</button>
+              <button class="btn btn-premium btn-next" disabled>Select Date & Time</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Guest Details & Add-ons -->
+          <div class="booking-step" data-step="3">
+            <h2 class="text-white h4 uppercase mb-3">Step 3: Player Details</h2>
+            <p class="text-secondary fs-7">Let us know how many players are in your group.</p>
+
+            <div class="row mt-4">
+              <div class="col-md-6 mb-3">
+                <label for="guest-count" class="form-label text-white">Player Count</label>
+                <input type="number" class="form-control" id="guest-count" value="2" min="1" max="15">
+                <div class="form-text text-muted fs-8">We require a $25 deposit per player.</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label text-white d-block">Deposit Sum</label>
+                <div class="fs-3 fw-bold text-primary" id="deposit-amount">$50.00</div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button class="btn btn-outline-premium btn-prev">Back</button>
+              <button class="btn btn-premium btn-next">Continue</button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Review & Payment -->
+          <div class="booking-step" data-step="4">
+            <h2 class="text-white h4 uppercase mb-3">Step 4: Secure Deposit</h2>
+            
+            <div class="row g-4 mt-2">
+              <div class="col-md-6">
+                <h3 class="text-white h6 uppercase">Booking Summary</h3>
+                <ul class="list-unstyled text-secondary fs-7 mt-3 p-3 bg-secondary rounded">
+                  <li class="mb-2">Experience: <strong class="text-white" id="summary-event-type">-</strong></li>
+                  <li class="mb-2">Schedule: <strong class="text-white" id="summary-date-time">-</strong></li>
+                  <li class="mb-2">Players: <strong class="text-white" id="summary-guests">-</strong></li>
+                  <hr class="border-secondary">
+                  <li class="mb-0">Pay Deposit: <strong class="text-primary fs-5" id="summary-deposit">-</strong></li>
+                </ul>
+              </div>
+              
+              <div class="col-md-6">
+                <h3 class="text-white h6 uppercase">Credit Card Details</h3>
+                <form id="payment-form" class="needs-validation" novalidate>
+                  <div class="mb-2">
+                    <label for="card-name" class="form-label fs-8 text-secondary">Cardholder Name</label>
+                    <input type="text" class="form-control form-control-sm" id="card-name" required>
+                  </div>
+                  <div class="mb-2">
+                    <label for="card-num" class="form-label fs-8 text-secondary">Card Number</label>
+                    <input type="text" class="form-control form-control-sm" id="card-num" placeholder="XXXX XXXX XXXX XXXX" required>
+                  </div>
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <label for="card-exp" class="form-label fs-8 text-secondary">Expiration</label>
+                      <input type="text" class="form-control form-control-sm" id="card-exp" placeholder="MM/YY" required>
+                    </div>
+                    <div class="col-6">
+                      <label for="card-cvv" class="form-label fs-8 text-secondary">CVV</label>
+                      <input type="password" class="form-control form-control-sm" id="card-cvv" placeholder="123" required>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-premium w-100 mt-3">Confirm Reservation</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start mt-4">
+              <button class="btn btn-outline-premium btn-prev">Back</button>
+            </div>
+          </div>
+
+          <!-- STEP 5: Booking Confirmed -->
+          <div class="booking-step text-center py-5" data-step="5">
+            <i class="bi bi-check-circle-fill text-success display-1 mb-4 d-inline-block"></i>
+            <h2 class="text-white uppercase display-6">Reservation Confirmed!</h2>
+            <p class="text-secondary max-width-600 mx-auto mt-2">Your target lane has been reserved. A confirmation email and mobile entry ticket has been dispatched.</p>
+            
+            <div class="bg-secondary p-4 rounded max-width-500 mx-auto my-4 text-start">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted fs-8">Reference Code:</span>
+                <span class="text-primary fw-bold fs-7 font-monospace" id="conf-reference">VX-123456</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted fs-8">Schedule:</span>
+                <span class="text-white fs-8" id="conf-date-time">-</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="text-muted fs-8">Deposit Paid:</span>
+                <span class="text-success fs-8 fw-semibold">Processed Successfully</span>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center gap-3">
+              <a href="dashboard.html" class="btn btn-premium">View Dashboard</a>
+              <a href="index.html" class="btn btn-outline-premium">Return Home</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="premium-footer text-secondary py-5">
+    <div class="container text-center">
+      <p class="mb-0 fs-8">&copy; 2026 AXORA Lounge. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

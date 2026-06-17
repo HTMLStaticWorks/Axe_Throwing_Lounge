@@ -1,0 +1,44 @@
+/* 
+   VALKYRIE AXES & LOUNGE - Dark Mode Adjustments
+   Hooked into [data-bs-theme="dark"]
+*/
+
+[data-bs-theme="dark"] {
+  /* Radial ambient glow in the background of page sections */
+  .glow-section {
+    position: relative;
+  }
+  
+  .glow-section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 94, 0, 0.05) 0%, rgba(255, 94, 0, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Deep glow shadows for dark glass cards */
+  .glass-card {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-card:hover {
+    box-shadow: 0 15px 50px rgba(255, 94, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+
+  /* High contrast headers in dark mode */
+  .premium-navbar {
+    background: rgba(10, 10, 12, 0.75);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Pulse glowing effect on primary links and badges */
+  .pulse-badge {
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
+  }
+}
