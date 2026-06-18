@@ -10,13 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initFormValidation();
   initBookingFlow();
   initActiveNav();
+  initMobileMenu();
 });
 
 /* ==========================================
    1. Theme Switching Handler (Dark/Light)
    ========================================== */
 function initTheme() {
-  const themeToggles = document.querySelectorAll('.theme-toggle');
+  const themeToggles = document.querySelectorAll('.theme-toggle, #theme-toggle');
   if (themeToggles.length === 0) return;
 
   // Read theme from localStorage or default to dark
@@ -36,7 +37,7 @@ function setTheme(theme) {
   document.documentElement.setAttribute('data-bs-theme', theme);
   localStorage.setItem('theme', theme);
 
-  const themeToggles = document.querySelectorAll('.theme-toggle');
+  const themeToggles = document.querySelectorAll('.theme-toggle, #theme-toggle');
   themeToggles.forEach(toggle => {
     const icon = toggle.querySelector('i');
     if (icon) {
@@ -304,6 +305,46 @@ function initActiveNav() {
         const toggle = parentDropdown.querySelector('.dropdown-toggle');
         if (toggle) toggle.classList.add('active');
       }
+    }
+  });
+}
+
+/* ==========================================
+   Mobile Menu – Hide Navbar & Styled Close
+   ========================================== */
+function initMobileMenu() {
+  const navbar  = document.querySelector('.premium-navbar');
+  const offcanvasEl = document.getElementById('mobileMenu');
+  if (!offcanvasEl) return;
+
+  /* Replace plain Bootstrap close btn with a styled X icon */
+  const oldClose = offcanvasEl.querySelector('.btn-close');
+  if (oldClose) {
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.setAttribute('data-bs-dismiss', 'offcanvas');
+    closeBtn.setAttribute('aria-label', 'Close menu');
+    closeBtn.id = 'mobileMenuClose';
+    closeBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
+    oldClose.replaceWith(closeBtn);
+  }
+
+  /* Hide navbar when offcanvas opens */
+  offcanvasEl.addEventListener('show.bs.offcanvas', () => {
+    if (navbar) navbar.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+    if (navbar) {
+      navbar.style.opacity = '0';
+      navbar.style.transform = 'translateY(-100%)';
+      navbar.style.pointerEvents = 'none';
+    }
+  });
+
+  /* Restore navbar when offcanvas closes */
+  offcanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+    if (navbar) {
+      navbar.style.opacity = '';
+      navbar.style.transform = '';
+      navbar.style.pointerEvents = '';
     }
   });
 }

@@ -21,7 +21,7 @@
 
   <!-- Sticky Premium Navigation Header -->
   <nav class="navbar navbar-expand-lg premium-navbar fixed-top">
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-2 px-sm-4 flex-nowrap">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <!-- Premium SVG Axe Logo -->
         <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
@@ -59,14 +59,11 @@
         <a href="admin.html" class="btn-icon" aria-label="Admin Dashboard" title="Admin Dashboard">
           <i class="fa-solid fa-user-shield fs-5"></i>
         </a>
-        <button class="btn-icon" id="theme-toggle" aria-label="Toggle Theme">
+        <button class="btn-icon theme-toggle" aria-label="Toggle Theme">
           <i class="bi bi-sun-fill"></i>
         </button>
-        <button class="btn-icon dir-toggle" id="dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
+        <button class="btn-icon dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
         
-        <button class="navbar-toggler text-white border-0 d-lg-none ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle Navigation">
-          <i class="bi bi-list fs-1"></i>
-        </button>
       </div>
     </div>
   </nav>
@@ -95,6 +92,16 @@
         <li class="dashboard-menu-item">
           <a href="#notifications" class="dashboard-menu-link" data-tab="notifications">
             <i class="bi bi-bell"></i> Notifications
+          </a>
+        </li>
+        <li class="dashboard-menu-item">
+          <a href="#admin" class="dashboard-menu-link" data-tab="admin">
+            <i class="bi bi-shield-lock"></i> Admin Profile
+          </a>
+        </li>
+        <li class="dashboard-menu-item border-top border-secondary mt-3 pt-3">
+          <a href="login.html" class="dashboard-menu-link text-danger">
+            <i class="bi bi-box-arrow-right"></i> Logout
           </a>
         </li>
       </ul>
@@ -193,7 +200,7 @@
                 <label for="prof-phone" class="form-label fs-8 text-secondary">Phone Number</label>
                 <input type="text" class="form-control" id="prof-phone" value="+1 (555) 0188">
               </div>
-              <div class="col-12">
+              <div class="col-12 text-center">
                 <button type="submit" class="btn btn-premium mt-3">Save Profile</button>
               </div>
             </div>
@@ -225,6 +232,93 @@
               <h4 class="text-white h6">Get Double Reward Points on Thursdays</h4>
               <p class="text-secondary fs-8 mb-0">Book a lane for any Thursday evening slot and receive double points towards customized souvenirs and drink tickets.</p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: Admin Profile Operations -->
+      <div class="dash-tab-content d-none" id="tab-admin">
+        <h1 class="text-white h3 uppercase mb-4">Admin Command Center</h1>
+        <p class="text-secondary fs-7 mb-4">Quick access to lounge controls, safety status, and operations stats.</p>
+        
+        <!-- Operations Cards -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-4 d-flex">
+            <div class="glass-card text-center py-4 h-100 w-100 d-flex flex-column justify-content-center">
+              <h3 class="text-secondary fs-8 uppercase">Lounge Status</h3>
+              <div class="fs-4 fw-bold text-success my-2"><span class="pulse-badge"></span>Active</div>
+              <p class="text-muted fs-8 mb-0">Lanes 1-10 operating normal</p>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="glass-card text-center py-4 h-100 w-100 d-flex flex-column justify-content-center">
+              <h3 class="text-secondary fs-8 uppercase">Active Throwers</h3>
+              <div class="display-6 fw-bold text-primary my-2">24</div>
+              <p class="text-muted fs-8 mb-0">Occupancy rate at 80%</p>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="glass-card text-center py-4 h-100 w-100 d-flex flex-column justify-content-center">
+              <h3 class="text-secondary fs-8 uppercase">Pending Actions</h3>
+              <div class="display-6 fw-bold text-warning my-2">3</div>
+              <p class="text-muted fs-8 mb-0">Reservations awaiting approval</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Controls Panel -->
+        <div class="glass-card mb-4">
+          <h2 class="text-white h5 uppercase mb-4">Lounge Controls</h2>
+          <div class="row g-3">
+            <div class="col-sm-6 col-lg-3 d-flex">
+              <button class="btn btn-outline-premium w-100 text-uppercase fs-8 d-flex align-items-center justify-content-center" style="min-height:80px;" onclick="alert('Digital targets projection reset!')">Reset Projections</button>
+            </div>
+            <div class="col-sm-6 col-lg-3 d-flex">
+              <button class="btn btn-outline-premium w-100 text-uppercase fs-8 d-flex align-items-center justify-content-center" style="min-height:80px;" onclick="alert('Night-mode graphics activated!')">Toggle Night Mode</button>
+            </div>
+            <div class="col-sm-6 col-lg-3 d-flex">
+              <button class="btn btn-outline-premium w-100 text-uppercase fs-8 d-flex align-items-center justify-content-center" style="min-height:80px;" onclick="alert('Safety briefing status broadcasted!')">Broadcast Safety</button>
+            </div>
+            <div class="col-sm-6 col-lg-3 d-flex">
+              <a href="admin.html" class="btn btn-premium w-100 text-uppercase fs-8 text-center d-flex align-items-center justify-content-center" style="min-height:80px;">Full Operations Panel</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Logs -->
+        <div class="glass-card">
+          <h2 class="text-white h5 uppercase mb-3">Recent Security & Booking Logs</h2>
+          <div class="table-responsive">
+            <table class="table table-dark table-hover border-secondary align-middle fs-7 mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Time</th>
+                  <th scope="col">Action Type</th>
+                  <th scope="col">Details</th>
+                  <th scope="col">Operator</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>20:30:15</td>
+                  <td><span class="badge bg-info text-dark">System</span></td>
+                  <td>Target lane projection calibrated for Lane 4</td>
+                  <td>System (Auto)</td>
+                </tr>
+                <tr>
+                  <td>19:55:02</td>
+                  <td><span class="badge bg-success text-dark">Safety</span></td>
+                  <td>Range safety checklist confirmed by Coach Alex</td>
+                  <td>Alex Thrower</td>
+                </tr>
+                <tr>
+                  <td>19:42:10</td>
+                  <td><span class="badge bg-warning text-dark">Booking</span></td>
+                  <td>New party request received: Ref VX-982103</td>
+                  <td>Online System</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

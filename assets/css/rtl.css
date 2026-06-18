@@ -39,10 +39,23 @@
   .nav-link::after {
     left: auto;
     right: 16px;
+    transform: none;
+  }
+
+  .premium-navbar .nav-link::after {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
   }
   
   /* Calendar adjustments */
   .step-dot i {
     transform: scaleX(-1);
+  }
+
+  /* Absolute controls positioning in RTL */
+  .auth-controls, .teaser-controls {
+    right: auto !important;
+    left: 20px !important;
   }
 }

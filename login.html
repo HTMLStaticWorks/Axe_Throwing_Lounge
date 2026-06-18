@@ -40,17 +40,14 @@
 
   <!-- Controls (Top Right) -->
   <div class="auth-controls">
-            <a href="dashboard.html" class="btn-icon" aria-label="Dashboard" title="Dashboard">
-          <i class="fa-solid fa-circle-user fs-5"></i>
-        </a>
-        <button class="btn-icon" id="theme-toggle" aria-label="Toggle Theme"><i class="bi bi-sun-fill"></i></button>
+    <button class="btn-icon theme-toggle" id="theme-toggle" aria-label="Toggle Theme"><i class="bi bi-sun-fill"></i></button>
     <button class="btn-icon dir-toggle" id="dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
   </div>
 
   <!-- Centered Login Card -->
   <main class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-4">
+      <div class="col-md-7 col-lg-5">
         
         <div class="text-center mb-4">
           <!-- Custom Logo -->
@@ -99,7 +96,7 @@
               <label for="login-pass" class="form-label fs-8 text-secondary">Password</label>
               <div class="input-group">
                 <input type="password" class="form-control" id="login-pass" required>
-                <button class="btn btn-outline-secondary border-color" type="button" id="pass-toggle" style="background: rgba(255,255,255,0.03);">
+                <button class="btn btn-outline-secondary border-color btn-pass-toggle" type="button" id="pass-toggle">
                   <i class="bi bi-eye-fill text-secondary"></i>
                 </button>
               </div>
@@ -120,12 +117,12 @@
           <div class="text-center my-3 text-muted fs-8">OR CONTINUE WITH</div>
           <div class="row g-2 mb-4">
             <div class="col-6">
-              <a href="dashboard.html" class="btn btn-outline-secondary border-color w-100 fs-8 py-2 text-white" style="background: rgba(255,255,255,0.03);">
+              <a href="dashboard.html" class="btn btn-outline-secondary border-color w-100 fs-8 py-2 text-white btn-social">
                 <i class="bi bi-google text-primary me-2"></i> Google
               </a>
             </div>
             <div class="col-6">
-              <a href="dashboard.html" class="btn btn-outline-secondary border-color w-100 fs-8 py-2 text-white" style="background: rgba(255,255,255,0.03);">
+              <a href="dashboard.html" class="btn btn-outline-secondary border-color w-100 fs-8 py-2 text-white btn-social">
                 <i class="bi bi-apple text-white me-2"></i> Apple
               </a>
             </div>

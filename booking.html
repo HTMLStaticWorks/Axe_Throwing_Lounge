@@ -59,7 +59,7 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Home
+              Home <i class="bi bi-chevron-down ms-1"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark border-secondary" aria-labelledby="homeDropdown">
               <li><a class="dropdown-item" href="index.html">Home 1</a></li>
@@ -78,10 +78,10 @@
         <a href="dashboard.html" class="btn-icon d-none d-lg-inline-flex" aria-label="Dashboard" title="Dashboard">
           <i class="fa-solid fa-circle-user fs-5"></i>
         </a>
-        <button class="btn-icon d-none d-lg-inline-flex theme-toggle" aria-label="Toggle Theme">
+        <button class="btn-icon theme-toggle" aria-label="Toggle Theme">
           <i class="bi bi-sun-fill"></i>
         </button>
-        <button class="btn-icon d-none d-lg-inline-flex dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
+        <button class="btn-icon dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
         <a href="login.html" class="btn btn-outline-premium d-none d-lg-inline-block">Login</a>
         <a href="booking.html" class="btn btn-premium d-none d-lg-inline-block">Book Your Lane</a>
         
@@ -91,6 +91,44 @@
       </div>
     </div>
   </nav>
+
+  <!-- Full-screen Mobile Navigation Offcanvas -->
+  <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header border-bottom border-secondary">
+      <h5 class="offcanvas-title" id="mobileMenuLabel">MENU</h5>
+      <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <ul class="navbar-nav fs-3">
+        <li class="nav-item my-2 dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="homeMobileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Home <i class="bi bi-chevron-down ms-1"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark border-secondary" aria-labelledby="homeMobileDropdown">
+            <li><a class="dropdown-item" href="index.html">Home 1</a></li>
+            <li><a class="dropdown-item" href="index2.html">Home 2</a></li>
+          </ul>
+        </li>
+        <li class="nav-item my-2"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item my-2"><a class="nav-link" href="services.html">Experiences</a></li>
+        <li class="nav-item my-2"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item my-2"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="mt-4 border-top border-secondary pt-4">
+        <div class="d-flex justify-content-center gap-3 mb-4">
+          <a href="dashboard.html" class="btn-icon" aria-label="Dashboard" title="Dashboard">
+            <i class="fa-solid fa-circle-user fs-5"></i>
+          </a>
+          <button class="btn-icon theme-toggle" aria-label="Toggle Theme">
+            <i class="bi bi-sun-fill"></i>
+          </button>
+          <button class="btn-icon dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
+        </div>
+        <a href="login.html" class="btn btn-outline-premium w-100 mb-3">Login</a>
+        <a href="booking.html" class="btn btn-premium w-100">Book A Lane</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Booking Wizard Container -->
   <main class="container" style="margin-top: 120px; margin-bottom: 80px;" id="booking-wizard">
@@ -305,8 +343,89 @@
 
   <!-- Footer -->
   <footer class="premium-footer text-secondary py-5">
-    <div class="container text-center">
-      <p class="mb-0 fs-8">&copy; 2026 AXORA Lounge. All rights reserved.</p>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <a class="d-flex align-items-center mb-3 text-white text-decoration-none" href="index.html">
+                    <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
+          <!-- Target Background -->
+          <circle cx="50" cy="50" r="45" stroke="url(#targetGrad)" stroke-width="6" fill="#121318"/>
+          <circle cx="50" cy="50" r="30" stroke="url(#targetGrad)" stroke-width="4" stroke-opacity="0.7"/>
+          <circle cx="50" cy="50" r="15" fill="url(#targetGrad)" />
+          
+          <!-- Crossed Axes -->
+          <g transform="rotate(45 50 50)">
+            <rect x="46" y="20" width="8" height="60" rx="4" fill="#EAECEF" />
+            <path d="M42 20 Q 30 15 30 30 Q 30 45 42 40 L 58 40 Q 70 45 70 30 Q 70 15 58 20 Z" fill="url(#axeGrad)" />
+          </g>
+          <g transform="rotate(-45 50 50)">
+            <rect x="46" y="20" width="8" height="60" rx="4" fill="#EAECEF" />
+            <path d="M42 20 Q 30 15 30 30 Q 30 45 42 40 L 58 40 Q 70 45 70 30 Q 70 15 58 20 Z" fill="url(#axeGrad)" />
+          </g>
+          
+          <defs>
+            <linearGradient id="axeGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FF5E00" />
+              <stop offset="100%" stop-color="#FF8C32" />
+            </linearGradient>
+            <linearGradient id="targetGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FF5E00" />
+              <stop offset="100%" stop-color="#FFD600" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="fs-4 fw-extrabold text-uppercase">AX<span class="text-gradient">ORA</span></span>
+          </a>
+          <p class="fs-7 text-muted">A premium axe throwing lounge combining urban sports and nightlife luxury. Reserve lanes, host team events, and order curated craft drinks.</p>
+          <div class="d-flex gap-2 mt-4">
+            <a href="#" class="btn-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn-icon" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="btn-icon" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h4 class="text-white h6 text-uppercase mb-3">Links</h4>
+          <ul class="list-unstyled fs-7">
+            <li class="mb-2"><a href="index.html" class="text-secondary">Home</a></li>
+            <li class="mb-2"><a href="booking.html" class="text-secondary">Book Now</a></li>
+            <li class="mb-2"><a href="services.html" class="text-secondary">Services</a></li>
+            <li class="mb-2"><a href="gallery.html" class="text-secondary">Gallery</a></li>
+            <li class="mb-2"><a href="about.html" class="text-secondary">About</a></li>
+            <li class="mb-2"><a href="contact.html" class="text-secondary">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h4 class="text-white h6 text-uppercase mb-3">Lounge Hours</h4>
+          <ul class="list-unstyled fs-7 text-muted">
+            <li class="mb-2">Monday - Thursday: <span class="text-white">4:00 PM - 11:00 PM</span></li>
+            <li class="mb-2">Friday: <span class="text-white">3:00 PM - 1:00 AM</span></li>
+            <li class="mb-2">Saturday: <span class="text-white">12:00 PM - 1:00 AM</span></li>
+            <li class="mb-2">Sunday: <span class="text-white">12:00 PM - 10:00 PM</span></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h4 class="text-white h6 text-uppercase mb-3">Lounge Location</h4>
+          <address class="fs-7 text-muted mb-4">
+            104 Urban Avenue<br>
+            Metropolis, NY 10001<br>
+            Phone: <a href="tel:+15550199" class="text-white">+1 (555) 0199</a><br>
+            Email: <a href="mailto:info@axoralounge.com" class="text-white">info@axoralounge.com</a>
+          </address>
+          <h4 class="text-white h6 text-uppercase mb-3">Newsletter</h4>
+          <form class="d-flex w-100" id="footer-newsletter">
+            <input type="email" class="form-control border-secondary bg-dark text-white rounded-end-0 shadow-none" placeholder="Email Address" style="padding: 12px 16px;" required>
+            <button class="btn btn-premium rounded-start-0 flex-shrink-0" type="submit" style="padding: 12px 16px;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="border-top border-secondary mt-4 pt-3 d-flex flex-column flex-md-row justify-content-between text-muted fs-8">
+        <p>&copy; 2026 AXORA Lounge. All rights reserved.</p>
+        <p>
+          <a href="coming-soon.html" class="text-muted me-2">Privacy Policy</a> | 
+          <a href="404.html" class="text-muted ms-2">Terms of Service</a>
+        </p>
+      </div>
     </div>
   </footer>
 

@@ -224,6 +224,33 @@ a:hover {
   transform: translateY(-2px);
 }
 
+/* Disabled buttons styling and hover/cursor states */
+.btn-premium:disabled,
+.btn-premium.disabled,
+.btn-outline-premium:disabled,
+.btn-outline-premium.disabled {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  cursor: not-allowed !important;
+  pointer-events: auto !important;
+  opacity: 0.5;
+}
+
+.btn-premium:disabled::before,
+.btn-premium.disabled::before {
+  display: none !important;
+}
+
+[data-bs-theme="light"] .btn-premium:disabled,
+[data-bs-theme="light"] .btn-premium.disabled,
+[data-bs-theme="light"] .btn-outline-premium:disabled,
+[data-bs-theme="light"] .btn-outline-premium.disabled {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
 .btn-icon {
   width: 44px;
   height: 44px;
@@ -266,13 +293,52 @@ a:hover {
   align-items: center;
   padding-top: 100px;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(10, 10, 12, 0.4) 0%, rgba(10, 10, 12, 0.95) 100%), 
-              url('../images/premium_hero_bg.png') no-repeat center center/cover;
+  background: linear-gradient(180deg, rgba(10, 10, 12, 0.3) 0%, rgba(10, 10, 12, 0.85) 100%), 
+              url('../images/premium_hero_bg.png') no-repeat center center/cover !important;
 }
-[data-bs-theme="light"] .hero-section {
-  background: linear-gradient(180deg, rgba(244, 245, 248, 0.4) 0%, rgba(244, 245, 248, 0.95) 100%), 
-              url('../images/premium_hero_bg.png') no-repeat center center/cover;
+
+/* Force high contrast and clean visibility for all hero elements in both light AND dark modes */
+/* These rules use high specificity to beat the [data-bs-theme="light"] .text-white override */
+.hero-section .hero-title,
+[data-bs-theme="light"] .hero-section .hero-title,
+[data-bs-theme="light"] .hero-section h1,
+[data-bs-theme="dark"] .hero-section .hero-title {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: initial;
 }
+
+[data-bs-theme="light"] .hero-section .text-white,
+.hero-section .text-white {
+  color: #FFFFFF !important;
+}
+
+.hero-section .hero-subtitle {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+[data-bs-theme="light"] .hero-section .hero-subtitle {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.hero-section .badge-premium {
+  background: rgba(255, 94, 0, 0.25) !important;
+  color: #FF8C32 !important;
+  border: 1px solid rgba(255, 94, 0, 0.4) !important;
+}
+
+.hero-section .btn-outline-premium {
+  color: #FFFFFF !important;
+  border-color: rgba(255, 94, 0, 0.8) !important;
+  background: rgba(10, 10, 12, 0.4) !important;
+}
+
+.hero-section .btn-outline-premium:hover {
+  background: rgba(255, 94, 0, 0.15) !important;
+  color: #FF8C32 !important;
+  border-color: #FF8C32 !important;
+}
+
 
 .hero-title {
   font-size: calc(2.5rem + 3.5vw); /* Responsive 72px-96px on large screens */
@@ -517,6 +583,10 @@ a:hover {
   flex-direction: column;
   justify-content: space-between;
   transition: var(--transition-smooth);
+  position: sticky;
+  top: 76px;
+  height: calc(100vh - 76px);
+  overflow-y: auto;
 }
 .dashboard-content {
   flex: 1;
@@ -559,15 +629,22 @@ a:hover {
 /* Gallery Masonry Layout */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
   grid-auto-flow: dense;
+  align-items: start;
 }
 .gallery-item {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-item:hover {
+  border-color: rgba(255, 94, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(255, 94, 0, 0.15);
 }
 .gallery-item.wide {
   grid-column: span 2;
@@ -579,8 +656,9 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transition-smooth);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   aspect-ratio: 4/3;
+  display: block;
 }
 .gallery-item.tall .gallery-image {
   aspect-ratio: 3/4;
@@ -588,22 +666,62 @@ a:hover {
 .gallery-item.wide .gallery-image {
   aspect-ratio: 16/9;
 }
+
+/* Icon-only card inner content fill */
+.gallery-item .gallery-icon-card {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  transition: opacity 0.4s ease;
+  background: var(--bg-secondary);
+}
+.gallery-item.tall .gallery-icon-card {
+  min-height: 400px;
+}
+
+/* Hover: fade out the icon content so overlay is fully readable */
+.gallery-item:hover .gallery-icon-card {
+  opacity: 0.1;
+}
+
 .gallery-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(10, 10, 12, 0) 40%, rgba(10, 10, 12, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(10, 10, 12, 0.1) 0%, rgba(10, 10, 12, 0.92) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 24px;
   opacity: 0;
-  transition: var(--transition-smooth);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gallery-overlay h4,
+[data-bs-theme="light"] .gallery-overlay .text-white,
+[data-bs-theme="light"] .gallery-overlay h4 {
+  color: #ffffff !important;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+.gallery-overlay span,
+[data-bs-theme="light"] .gallery-overlay span {
+  color: var(--primary-accent) !important;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 .gallery-item:hover .gallery-image {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 .gallery-item:hover .gallery-overlay {
   opacity: 1;
@@ -665,6 +783,8 @@ a:hover {
     border-right: none;
     border-bottom: 1px solid var(--border-color);
     padding: 20px;
+    height: auto;
+    z-index: 1020;
   }
   .dashboard-menu {
     display: flex;
@@ -860,4 +980,435 @@ a:hover {
 .premium-footer a.text-muted:hover::after,
 .premium-footer a.text-white:hover::after {
   width: 100%;
+}
+
+/* ==========================================
+   Premium Navbar Dropdown Enhancement
+   ========================================== */
+
+/* Remove default Bootstrap caret arrow since we use a custom chevron icon */
+.premium-navbar .dropdown-toggle::after,
+.offcanvas-body .dropdown-toggle::after {
+  display: none !important;
+}
+
+/* Chevron Rotation styling */
+.premium-navbar .dropdown-toggle .bi-chevron-down,
+.offcanvas-body .dropdown-toggle .bi-chevron-down {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 0.7rem;
+  vertical-align: middle;
+}
+
+/* Rotate chevron on hover (desktop) or when dropdown is shown */
+.premium-navbar .nav-item.dropdown:hover .dropdown-toggle .bi-chevron-down,
+.premium-navbar .dropdown-toggle.show .bi-chevron-down,
+.offcanvas-body .dropdown-toggle.show .bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* Desktop Hover & Slide Dropdown Menu */
+@media (min-width: 992px) {
+  .premium-navbar .dropdown-menu {
+    display: block !important;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    margin-top: 0 !important;
+  }
+
+  .premium-navbar .nav-item.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* Premium Glassmorphic Dropdown Menu styling (desktop) */
+.premium-navbar .dropdown-menu {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: 0 10px 30px var(--glass-shadow);
+  border-radius: 6px;
+  padding: 8px 0;
+  min-width: 160px;
+}
+
+.premium-navbar .dropdown-item {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-secondary) !important;
+  padding: 8px 20px;
+  transition: var(--transition-smooth);
+}
+
+.premium-navbar .dropdown-item:hover {
+  background: rgba(255, 94, 0, 0.1) !important;
+  color: var(--primary-accent) !important;
+  transform: translateX(4px);
+}
+
+.premium-navbar .dropdown-item.active,
+.premium-navbar .dropdown-item:active {
+  background: var(--primary-accent) !important;
+  color: #FFFFFF !important;
+}
+
+/* Premium Styling for Mobile offcanvas dropdown items */
+.offcanvas-body .dropdown-menu {
+  background-color: var(--bg-tertiary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px;
+  padding: 8px 0;
+  margin-top: 8px !important;
+  box-shadow: none;
+}
+
+.offcanvas-body .dropdown-item {
+  color: var(--text-secondary) !important;
+  font-size: 1.1rem;
+  padding: 8px 24px;
+  transition: var(--transition-smooth);
+}
+
+.offcanvas-body .dropdown-item:hover,
+.offcanvas-body .dropdown-item.active {
+  background-color: rgba(255, 94, 0, 0.1) !important;
+  color: var(--primary-accent) !important;
+}
+
+/* ==========================================
+   Mobile Menu – Close (X) Button (top-right corner)
+   ========================================== */
+
+/* Make the offcanvas itself the positioning context */
+#mobileMenu {
+  position: fixed !important;
+  background: #0A0A0C !important;
+}
+
+[data-bs-theme="light"] #mobileMenu {
+  background: var(--bg-primary) !important; /* #F4F5F8 */
+}
+
+/* The header just shows the MENU label; close btn is absolute */
+#mobileMenu .offcanvas-header {
+  padding: 1.25rem 1.5rem;
+  padding-right: 4.5rem; /* room for the absolute close btn */
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+[data-bs-theme="light"] #mobileMenu .offcanvas-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#mobileMenu .offcanvas-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+[data-bs-theme="light"] #mobileMenu .offcanvas-title {
+  color: var(--text-primary);
+}
+
+/* Absolutely position the X button at the top-right */
+#mobileMenuClose {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.25s ease;
+}
+
+[data-bs-theme="light"] #mobileMenuClose {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  color: var(--text-primary);
+}
+
+#mobileMenuClose:hover,
+#mobileMenuClose:focus {
+  background: rgba(255, 94, 0, 0.2);
+  border-color: var(--primary-accent);
+  color: var(--primary-accent);
+  transform: rotate(90deg) scale(1.05);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 94, 0, 0.15);
+}
+
+#mobileMenuClose .bi {
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ==========================================
+   Mobile Menu – Contrast & Visibility Fixes
+   ========================================== */
+
+/* Dark Mode / Default link styles */
+#mobileMenu .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+#mobileMenu .nav-link:hover,
+#mobileMenu .nav-link.active {
+  color: var(--primary-accent) !important;
+  background-color: rgba(255, 94, 0, 0.1) !important;
+}
+
+/* Light Mode link styles override */
+[data-bs-theme="light"] #mobileMenu .nav-link {
+  color: var(--text-secondary) !important;
+}
+
+[data-bs-theme="light"] #mobileMenu .nav-link:hover,
+[data-bs-theme="light"] #mobileMenu .nav-link.active {
+  color: var(--primary-accent) !important;
+  background-color: rgba(255, 94, 0, 0.06) !important;
+}
+
+/* Dropdown items contrast inside mobile menu */
+#mobileMenu .dropdown-item {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+#mobileMenu .dropdown-item:hover,
+#mobileMenu .dropdown-item.active {
+  color: var(--primary-accent) !important;
+  background-color: rgba(255, 94, 0, 0.08) !important;
+}
+
+[data-bs-theme="light"] #mobileMenu .dropdown-item {
+  color: var(--text-secondary) !important;
+}
+
+[data-bs-theme="light"] #mobileMenu .dropdown-item:hover,
+[data-bs-theme="light"] #mobileMenu .dropdown-item.active {
+  color: var(--primary-accent) !important;
+  background-color: rgba(255, 94, 0, 0.05) !important;
+}
+
+/* Action group buttons and icons visibility */
+#mobileMenu .btn-icon {
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme="light"] #mobileMenu .btn-icon {
+  color: var(--text-secondary) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+}
+
+#mobileMenu .btn-icon:hover {
+  background: var(--primary-accent) !important;
+  border-color: var(--primary-accent) !important;
+  color: #ffffff !important;
+}
+
+[data-bs-theme="light"] #mobileMenu .btn-icon:hover {
+  background: var(--primary-accent) !important;
+  border-color: var(--primary-accent) !important;
+  color: #ffffff !important;
+}
+
+#mobileMenu .btn-outline-premium {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-bs-theme="light"] #mobileMenu .btn-outline-premium {
+  color: var(--text-primary) !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+#mobileMenu .btn-outline-premium:hover {
+  background: rgba(255, 94, 0, 0.15) !important;
+  border-color: var(--primary-accent) !important;
+  color: var(--primary-accent) !important;
+}
+
+[data-bs-theme="light"] #mobileMenu .btn-outline-premium:hover {
+  background: rgba(255, 94, 0, 0.06) !important;
+  border-color: var(--primary-accent) !important;
+  color: var(--primary-accent) !important;
+}
+
+/* Custom Social Buttons and Password Toggles hover styling */
+.btn-social {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-color) !important;
+  transition: var(--transition-smooth) !important;
+}
+
+[data-bs-theme="light"] .btn-social {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+  color: var(--text-primary) !important;
+}
+
+.btn-social:hover {
+  background-color: rgba(255, 94, 0, 0.1) !important;
+  border-color: var(--primary-accent) !important;
+  color: var(--primary-accent) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 94, 0, 0.15);
+}
+
+[data-bs-theme="light"] .btn-social:hover {
+  background-color: rgba(255, 94, 0, 0.05) !important;
+  border-color: var(--primary-accent) !important;
+  color: var(--primary-accent) !important;
+}
+
+.btn-pass-toggle {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-color) !important;
+  transition: var(--transition-smooth) !important;
+}
+
+[data-bs-theme="light"] .btn-pass-toggle {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+.btn-pass-toggle:hover {
+  background-color: rgba(255, 94, 0, 0.1) !important;
+  border-color: var(--primary-accent) !important;
+}
+
+.btn-pass-toggle:hover i {
+  color: var(--primary-accent) !important;
+}
+
+[data-bs-theme="light"] .btn-pass-toggle:hover {
+  background-color: rgba(255, 94, 0, 0.05) !important;
+}
+
+/* Premium Glass Accordion styling overrides */
+.accordion-dark .accordion-item {
+  border: 1px solid var(--glass-border) !important;
+  background: transparent !important;
+}
+
+.accordion-dark .accordion-button {
+  transition: var(--transition-smooth);
+}
+
+.accordion-dark .accordion-button:not(.collapsed) {
+  background-color: rgba(255, 94, 0, 0.08) !important;
+  color: var(--primary-accent) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.accordion-dark .accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+.accordion-dark .accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ff5e00'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+[data-bs-theme="light"] .accordion-dark .accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230a0a0c'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+
+/* ============================================================
+   Navbar 1024px – 1199px Fix
+   Tighten spacing so all items fit on one line at lg breakpoint
+   ============================================================ */
+@media (min-width: 1024px) and (max-width: 1199px) {
+
+  /* Reduce horizontal padding inside the navbar container */
+  .premium-navbar .container-fluid {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Reduce logo size slightly */
+  .navbar-brand svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .navbar-brand span {
+    font-size: 1rem !important;
+  }
+
+  /* Tighten nav-link padding and font */
+  .nav-link {
+    font-size: 12px !important;
+    padding: 8px 8px !important;
+    letter-spacing: 0.02em !important;
+  }
+  .nav-link::after {
+    left: 8px !important;
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: calc(100% - 16px) !important;
+  }
+
+  /* Shrink CTA buttons in navbar */
+  .premium-navbar .btn-premium,
+  .premium-navbar .btn-outline-premium {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* Shrink the icon buttons in the controls group */
+  .premium-navbar .btn-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+
+  /* Reduce gap between controls */
+  .premium-navbar .d-flex.align-items-center {
+    gap: 6px !important;
+  }
+}
+
+/* ============================================================
+   Footer 1024px – 1199px Fix
+   Give Newsletter column more space to prevent input squishing
+   ============================================================ */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  /* Reduce Branding column from 33.3% to 25% */
+  .premium-footer .row.g-4 > .col-lg-4 {
+    width: 25% !important;
+  }
+  /* Increase Location/Newsletter column from 25% to 33.3% */
+  .premium-footer .row.g-4 > .col-lg-3:nth-child(4) {
+    width: 33.333333% !important;
+  }
+  
+  /* Shrink padding inside newsletter form slightly */
+  #footer-newsletter input,
+  #footer-newsletter button {
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+  }
 }
