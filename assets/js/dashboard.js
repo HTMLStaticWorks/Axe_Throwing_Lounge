@@ -102,10 +102,12 @@ function renderUserBookings() {
       <td>${booking.guests} Players</td>
       <td><span class="badge ${statusClass}">${booking.status}</span></td>
       <td>
-        ${booking.status !== 'Cancelled' && booking.status !== 'Completed' ? 
-          `<button class="btn btn-sm btn-outline-danger py-1 px-2" onclick="cancelBooking('${booking.id}')">Cancel</button>` : 
-          `<span class="text-muted">-</span>`
-        }
+        <div class="d-flex align-items-center gap-1">
+          ${booking.status !== 'Cancelled' && booking.status !== 'Completed' ? 
+            `<button class="btn btn-sm btn-outline-danger py-1 px-2" onclick="cancelBooking('${booking.id}')">Cancel</button>` : 
+            `<span class="text-muted">-</span>`
+          }
+        </div>
       </td>
     `;
     bookingsTable.appendChild(row);
@@ -177,13 +179,15 @@ function renderAdminBookings() {
       <td>${booking.guests}</td>
       <td><span class="badge ${statusClass}">${booking.status}</span></td>
       <td>
-        ${booking.status === 'Pending Approval' ? 
-          `<button class="btn btn-xs btn-success py-0 px-2 me-1" onclick="approveBooking('${booking.id}')">Approve</button>` : ''
-        }
-        ${booking.status !== 'Cancelled' && booking.status !== 'Completed' ? 
-          `<button class="btn btn-xs btn-danger py-0 px-2" onclick="cancelBooking('${booking.id}')">Cancel</button>` : 
-          `<span class="text-muted">-</span>`
-        }
+        <div class="d-flex align-items-center gap-1">
+          ${booking.status === 'Pending Approval' ? 
+            `<button class="btn btn-xs btn-success py-1 px-2" onclick="approveBooking('${booking.id}')">Approve</button>` : ''
+          }
+          ${booking.status !== 'Cancelled' && booking.status !== 'Completed' ? 
+            `<button class="btn btn-xs btn-danger py-1 px-2" onclick="cancelBooking('${booking.id}')">Cancel</button>` : 
+            `<span class="text-muted">-</span>`
+          }
+        </div>
       </td>
     `;
     adminTable.appendChild(row);
