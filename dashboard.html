@@ -75,8 +75,38 @@
     
     <!-- Sidebar Navigation -->
     <aside class="dashboard-sidebar offcanvas-lg offcanvas-start" tabindex="-1" id="dashboardSidebar" aria-labelledby="dashboardSidebarLabel">
-      <div class="offcanvas-header d-lg-none border-bottom border-secondary mb-3">
-        <h5 class="offcanvas-title text-white fw-bold uppercase" id="dashboardSidebarLabel">AXORA Menu</h5>
+      <div class="offcanvas-header d-lg-none border-bottom border-secondary mb-3 justify-content-between align-items-center w-100 px-3 py-3" style="min-height: 76px;">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <!-- Premium SVG Axe Logo -->
+          <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
+            <!-- Target Background -->
+            <circle cx="50" cy="50" r="45" stroke="url(#sidebarTargetGrad)" stroke-width="6" fill="#121318"/>
+            <circle cx="50" cy="50" r="30" stroke="url(#sidebarTargetGrad)" stroke-width="4" stroke-opacity="0.7"/>
+            <circle cx="50" cy="50" r="15" fill="url(#sidebarTargetGrad)" />
+            
+            <!-- Crossed Axes -->
+            <g transform="rotate(45 50 50)">
+              <rect x="46" y="20" width="8" height="60" rx="4" fill="#EAECEF" />
+              <path d="M42 20 Q 30 15 30 30 Q 30 45 42 40 L 58 40 Q 70 45 70 30 Q 70 15 58 20 Z" fill="url(#sidebarAxeGrad)" />
+            </g>
+            <g transform="rotate(-45 50 50)">
+              <rect x="46" y="20" width="8" height="60" rx="4" fill="#EAECEF" />
+              <path d="M42 20 Q 30 15 30 30 Q 30 45 42 40 L 58 40 Q 70 45 70 30 Q 70 15 58 20 Z" fill="url(#sidebarAxeGrad)" />
+            </g>
+            
+            <defs>
+              <linearGradient id="sidebarAxeGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FF5E00" />
+                <stop offset="100%" stop-color="#FF8C32" />
+              </linearGradient>
+              <linearGradient id="sidebarTargetGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FF5E00" />
+                <stop offset="100%" stop-color="#FFD600" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span id="dashboardSidebarLabel" class="fs-5 fw-extrabold text-uppercase tracking-wider text-theme-primary">AX<span class="text-gradient">ORA</span></span>
+        </a>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#dashboardSidebar" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body flex-column p-0">

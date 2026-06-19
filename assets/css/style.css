@@ -1185,6 +1185,42 @@ a:hover {
   line-height: 1;
 }
 
+/* ============================================================
+   Dashboard Sidebar – Close (Wrong/X) Button Styling
+   ============================================================ */
+#dashboardSidebar .btn-close {
+  background: rgba(255, 255, 255, 0.08) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em no-repeat !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.25s ease !important;
+  margin-right: 0px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  filter: none !important;
+}
+
+[data-bs-theme="light"] #dashboardSidebar .btn-close {
+  background: rgba(0, 0, 0, 0.04) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230a0a0c'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em no-repeat !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.25) !important;
+  filter: none !important;
+}
+
+#dashboardSidebar .btn-close:hover,
+#dashboardSidebar .btn-close:focus {
+  background-color: rgba(255, 94, 0, 0.2) !important;
+  border-color: var(--primary-accent) !important;
+  transform: rotate(90deg) scale(1.05);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 94, 0, 0.15);
+}
+
+
 /* ==========================================
    Mobile Menu – Contrast & Visibility Fixes
    ========================================== */
@@ -1474,6 +1510,13 @@ a:hover {
   }
 }
 
+/* Ensure dashboard sidebar offcanvas z-index is higher than navbar (1050) on screens 1024px and below */
+@media (max-width: 1024px) {
+  .dashboard-sidebar.offcanvas-lg {
+    z-index: 1060 !important;
+  }
+}
+
 /* Force dashboard sidebar to act as offcanvas and show hamburger button in 1024px view (992px - 1024px) */
 @media (min-width: 992px) and (max-width: 1024px) {
   .dashboard-sidebar.offcanvas-lg {
@@ -1483,7 +1526,7 @@ a:hover {
     left: 0 !important;
     width: 280px !important;
     height: 100vh !important;
-    z-index: 1045 !important;
+    z-index: 1060 !important;
     background-color: var(--bg-secondary) !important;
     border-right: 1px solid var(--border-color) !important;
     transform: translateX(-100%) !important;
