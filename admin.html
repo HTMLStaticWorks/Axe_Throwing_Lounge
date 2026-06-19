@@ -66,6 +66,9 @@
           <i class="bi bi-sun-fill"></i>
         </button>
         <button class="btn-icon dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
+        <button class="btn-icon d-lg-none ms-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#dashboardSidebar" aria-controls="dashboardSidebar" aria-label="Toggle Menu">
+          <i class="bi bi-list fs-4"></i>
+        </button>
       </div>
     </div>
   </nav>
@@ -74,8 +77,13 @@
   <div class="dashboard-container">
     
     <!-- Sidebar Navigation -->
-    <aside class="dashboard-sidebar">
-      <ul class="dashboard-menu">
+    <aside class="dashboard-sidebar offcanvas-lg offcanvas-start" tabindex="-1" id="dashboardSidebar" aria-labelledby="dashboardSidebarLabel">
+      <div class="offcanvas-header d-lg-none border-bottom border-secondary mb-3">
+        <h5 class="offcanvas-title text-white fw-bold uppercase" id="dashboardSidebarLabel">AXORA Admin</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#dashboardSidebar" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body flex-column p-0">
+        <ul class="dashboard-menu w-100">
         <li class="dashboard-menu-item">
           <a href="#overview" class="dashboard-menu-link active" data-tab="overview">
             <i class="bi bi-graph-up-arrow"></i> Overview
@@ -92,18 +100,16 @@
           </a>
         </li>
         <li class="dashboard-menu-item">
-          <a href="dashboard.html" class="dashboard-menu-link">
+          <a href="#user" class="dashboard-menu-link" data-tab="user">
             <i class="bi bi-person-workspace"></i> User Dashboard
           </a>
         </li>
         <li class="dashboard-menu-item border-top border-secondary mt-3 pt-3">
-          <a href="login.html" class="dashboard-menu-link text-danger">
+          <a href="index.html" class="dashboard-menu-link text-danger">
             <i class="bi bi-box-arrow-right"></i> Logout
           </a>
         </li>
       </ul>
-      <div class="text-center pt-4 border-top border-secondary text-muted fs-8">
-        AXORA Control Center v1.2
       </div>
     </aside>
 
@@ -225,6 +231,102 @@
         </div>
       </div>
 
+      <!-- TAB 4: User Dashboard (Embedded) -->
+      <div class="admin-tab-content d-none" id="tab-user">
+        <h1 class="text-white h3 uppercase mb-4">User Workspace Preview</h1>
+        <p class="text-secondary fs-7 mb-4">View simulated active user profiles, member loyalty rewards, and player metrics.</p>
+
+        <!-- User Stats Grid -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-4 d-flex">
+            <div class="glass-card text-center py-4 h-100 w-100 d-flex flex-column justify-content-center">
+              <h3 class="text-secondary fs-8 uppercase">Simulated Member Tier</h3>
+              <div class="fs-3 fw-bold text-gradient my-2">Gold VIP Status</div>
+              <p class="text-muted fs-8 mb-0">15% discount on group lanes</p>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="glass-card text-center py-4 h-100 w-100 d-flex flex-column justify-content-center">
+              <h3 class="text-secondary fs-8 uppercase">Loyalty Points</h3>
+              <div class="display-6 fw-bold text-success my-2">3,450</div>
+              <p class="text-muted fs-8 mb-0">3 reward certificates active</p>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="glass-card text-center py-4 h-100 w-100 d-flex flex-column justify-content-center">
+              <h3 class="text-secondary fs-8 uppercase">Target Accuracy</h3>
+              <div class="display-6 fw-bold text-primary my-2">78.5%</div>
+              <p class="text-muted fs-8 mb-0">Ranked #14 in AXORA League</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Member Quick Actions -->
+          <div class="col-lg-6">
+            <div class="glass-card h-100">
+              <h3 class="text-white h5 uppercase mb-3">User Perks & Rewards</h3>
+              <p class="text-secondary fs-7 mb-4">A quick overview of rewards that users can claim on their booking dashboard.</p>
+              
+              <div class="d-flex align-items-center mb-3 p-2 rounded bg-dark border border-secondary">
+                <div class="btn-icon text-success border-success me-3"><i class="bi bi-gift fs-5"></i></div>
+                <div>
+                  <h4 class="text-white h6 mb-0">Free Target Customization</h4>
+                  <p class="text-muted fs-8 mb-0">Valid until July 31, 2026</p>
+                </div>
+              </div>
+              
+              <div class="d-flex align-items-center mb-3 p-2 rounded bg-dark border border-secondary">
+                <div class="btn-icon text-primary border-primary me-3"><i class="bi bi-cup-straw fs-5"></i></div>
+                <div>
+                  <h4 class="text-white h6 mb-0">Complimentary Craft Mocktail</h4>
+                  <p class="text-muted fs-8 mb-0">Valid for any Thursday reservation</p>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center p-2 rounded bg-dark border border-secondary">
+                <div class="btn-icon text-warning border-warning me-3"><i class="bi bi-shield-check fs-5"></i></div>
+                <div>
+                  <h4 class="text-white h6 mb-0">Free AXORA League T-shirt</h4>
+                  <p class="text-muted fs-8 mb-0">Redeemable at front desk checkout</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Booking Quick Form -->
+          <div class="col-lg-6">
+            <div class="glass-card h-100">
+              <h3 class="text-white h5 uppercase mb-3">Simulate User Account</h3>
+              <p class="text-secondary fs-7 mb-3">Update simulated user parameters to test dashboard display logic.</p>
+              <form id="sim-user-form">
+                <div class="row g-2">
+                  <div class="col-sm-6">
+                    <label for="sim-name" class="form-label fs-8 text-secondary">Mock Username</label>
+                    <input type="text" class="form-control fs-7" id="sim-name" value="Alex Thrower">
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="sim-points" class="form-label fs-8 text-secondary">Reward Points</label>
+                    <input type="number" class="form-control fs-7" id="sim-points" value="3450">
+                  </div>
+                  <div class="col-12">
+                    <label for="sim-tier" class="form-label fs-8 text-secondary">Membership Tier</label>
+                    <select class="form-select fs-7" id="sim-tier">
+                      <option value="Bronze">Bronze Tier (0 - 1,000 pts)</option>
+                      <option value="Silver">Silver Tier (1,000 - 3,000 pts)</option>
+                      <option value="Gold" selected>Gold VIP Tier (3,000+ pts)</option>
+                    </select>
+                  </div>
+                  <div class="col-12 text-end">
+                    <button type="button" class="btn btn-premium btn-sm mt-2" onclick="alert('User profile simulated!')">Save Simulator Data</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </main>
   </div>
 
@@ -240,11 +342,16 @@
 
       links.forEach(link => {
         link.addEventListener('click', (e) => {
+          const tabName = link.dataset.tab;
+          if (!tabName) {
+            // Let regular links navigate to other pages (like dashboard.html or login.html)
+            return;
+          }
+
           e.preventDefault();
           links.forEach(l => l.classList.remove('active'));
           link.classList.add('active');
 
-          const tabName = link.dataset.tab;
           tabs.forEach(tab => {
             tab.classList.add('d-none');
             if (tab.id === `tab-${tabName}`) {
@@ -255,6 +362,17 @@
           if (tabName === 'bookings' && historyBox) {
             historyBox.innerHTML = '';
             historyBox.appendChild(baseTable.cloneNode(true));
+          }
+
+          // Close the offcanvas hamburger menu if it's currently open (on mobile/tablet)
+          if (window.innerWidth < 992) {
+            const sidebarElement = document.getElementById('dashboardSidebar');
+            if (sidebarElement) {
+              const offcanvasInstance = bootstrap.Offcanvas.getInstance(sidebarElement) || bootstrap.Offcanvas.getOrCreateInstance(sidebarElement);
+              if (offcanvasInstance) {
+                offcanvasInstance.hide();
+              }
+            }
           }
         });
       });

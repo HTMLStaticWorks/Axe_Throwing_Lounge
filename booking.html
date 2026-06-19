@@ -119,10 +119,6 @@
           <a href="dashboard.html" class="btn-icon" aria-label="Dashboard" title="Dashboard">
             <i class="fa-solid fa-circle-user fs-5"></i>
           </a>
-          <button class="btn-icon theme-toggle" aria-label="Toggle Theme">
-            <i class="bi bi-sun-fill"></i>
-          </button>
-          <button class="btn-icon dir-toggle" aria-label="Toggle Direction"><i class="bi bi-arrow-left-right"></i></button>
         </div>
         <a href="login.html" class="btn btn-outline-premium w-100 mb-3">Login</a>
         <a href="booking.html" class="btn btn-premium w-100">Book A Lane</a>
@@ -233,7 +229,7 @@
               </div>
             </div>
 
-            <div class="d-flex justify-content-between mt-4">
+            <div class="d-flex flex-column-reverse flex-sm-row justify-content-between gap-3 confirmation-actions mt-4">
               <button class="btn btn-outline-premium btn-prev">Back</button>
               <button class="btn btn-premium btn-next" disabled>Select Date & Time</button>
             </div>
@@ -256,7 +252,7 @@
               </div>
             </div>
 
-            <div class="d-flex justify-content-between mt-4">
+            <div class="d-flex flex-column-reverse flex-sm-row justify-content-between gap-3 confirmation-actions mt-4">
               <button class="btn btn-outline-premium btn-prev">Back</button>
               <button class="btn btn-premium btn-next">Continue</button>
             </div>
@@ -267,15 +263,21 @@
             <h2 class="text-white h4 uppercase mb-3">Step 4: Secure Deposit</h2>
             
             <div class="row g-4 mt-2">
-              <div class="col-md-6">
-                <h3 class="text-white h6 uppercase">Booking Summary</h3>
-                <ul class="list-unstyled text-secondary fs-7 mt-3 p-3 bg-secondary rounded">
-                  <li class="mb-2">Experience: <strong class="text-white" id="summary-event-type">-</strong></li>
-                  <li class="mb-2">Schedule: <strong class="text-white" id="summary-date-time">-</strong></li>
-                  <li class="mb-2">Players: <strong class="text-white" id="summary-guests">-</strong></li>
-                  <hr class="border-secondary">
-                  <li class="mb-0">Pay Deposit: <strong class="text-primary fs-5" id="summary-deposit">-</strong></li>
-                </ul>
+              <div class="col-md-6 d-flex flex-column justify-content-between">
+                <div>
+                  <h3 class="text-white h6 uppercase">Booking Summary</h3>
+                  <ul class="list-unstyled text-secondary fs-7 mt-3 p-3 bg-secondary rounded mb-0">
+                    <li class="mb-2">Experience: <strong class="text-white" id="summary-event-type">-</strong></li>
+                    <li class="mb-2">Schedule: <strong class="text-white" id="summary-date-time">-</strong></li>
+                    <li class="mb-2">Players: <strong class="text-white" id="summary-guests">-</strong></li>
+                    <hr class="border-secondary">
+                    <li class="mb-0">Pay Deposit: <strong class="text-primary fs-5" id="summary-deposit">-</strong></li>
+                  </ul>
+                </div>
+                <!-- Desktop Back Button -->
+                <div class="d-none d-md-block mt-4">
+                  <button type="button" class="btn btn-outline-premium btn-prev">Back</button>
+                </div>
               </div>
               
               <div class="col-md-6">
@@ -304,8 +306,9 @@
               </div>
             </div>
 
-            <div class="d-flex justify-content-start mt-4">
-              <button class="btn btn-outline-premium btn-prev">Back</button>
+            <!-- Mobile Back Button -->
+            <div class="d-flex d-md-none justify-content-start mt-4">
+              <button type="button" class="btn btn-outline-premium btn-prev w-100">Back</button>
             </div>
           </div>
 
@@ -330,7 +333,7 @@
               </div>
             </div>
 
-            <div class="d-flex justify-content-center gap-3">
+            <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 confirmation-actions">
               <a href="dashboard.html" class="btn btn-premium">View Dashboard</a>
               <a href="index.html" class="btn btn-outline-premium">Return Home</a>
             </div>
